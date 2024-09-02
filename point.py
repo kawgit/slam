@@ -7,7 +7,7 @@ class Point:
         self.velocity = np.array(velocity)
         self.color = np.array(color) if color is not None else np.random.randint(0, 255, (3,))
 
-        self.real_position = np.array([0, 0, 0])
+        self.real_position = None
         
 
     def update(self, new_position):
