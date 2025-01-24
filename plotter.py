@@ -50,13 +50,11 @@ class Plotter:
 
         points_filtered = filter_outliers(self.points, z_threshold=3)
 
-        real_positions = np.array([point.real_position for point in points_filtered])
-
-        real_positions /= np.max(real_positions, axis=0)
-
+        position_3ds = np.array([point.position_3d for point in points_filtered])
+        position_3ds /= np.median(np.abs(position_3ds), axis=0) * 2
         colors = np.array([point.color for point in points_filtered]) / 255
 
-        self.scat._offsets3d = ((real_positions[:, 0], real_positions[:, 2], -real_positions[:, 1]))
+        self.scat._offsets3d = ((position_3ds[:, 0], position_3ds[:, 2], -position_3ds[:, 1]))
         self.scat.set_facecolors(colors)
         self.scat.set_edgecolors(colors)
 

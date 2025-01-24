@@ -1,6 +1,6 @@
 import cv2
 
-video_name = "duomo"
+video_name = "road"
 video_path = f"./videos/{video_name}.mp4"
 
 num_chunks_x = 160
@@ -9,10 +9,7 @@ num_points_per_chunk = 10
 
 num_points = num_points_per_chunk * num_chunks_x * num_chunks_y
 
-focal_length = 1
-
-
-
+focal_length = 2
 
 video = cv2.VideoCapture(video_path)
 
